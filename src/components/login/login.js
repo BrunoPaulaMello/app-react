@@ -3,26 +3,28 @@ import "./login.css"
 
 const Login = ()=>{
 
-    const [email, setEmail] = useState('')
-    const [password, setPass] = useState('')
+    const [data, setData] = useState({
+        email: "",
+        password: ""
+    })
     const [error,setError] = useState(false)
     const [blocked, setBlocked] = useState(false)
 
-    async function handleLogin(e){
+    async function handleLogin(e, data){
         e.preventDefault() 
 
         setError(false)
 
-        function verEmail(){
+        function verEmail(email){
             const re = /\S+@\S+\.\S+/;
             return re.test(email);
           }
 
-        function verPass(){
+        function verPass(pass){
             let verificacoes = [/[A-Z]/,/[a-z]/,/[0-9]/,/[!|@|#|$|%|^|&|*|(|)|-|_]/]
 
             for(let i = 0; i<verificacoes.length;i++){
-                if(verificacoes[i].test(password)){
+                if(verificacoes[i].test(pass)){
                     console.log('ok')
                 } else {
                     return false
@@ -32,13 +34,13 @@ const Login = ()=>{
             return true
         }
 
-        if(verEmail() && verPass()){
+        if(verEmail(data.email) && verPass(data.password)){
 
             setBlocked(true)
 
             let user = {
-                email: email,
-                password: password,
+                email: data.email,
+                password: data.password,
             }
 
             let objConf = {
@@ -76,7 +78,7 @@ const Login = ()=>{
             placeholder="Email" 
             required
             onChange={(e)=>{
-                setEmail(e.target.value)
+                setData({...data, email: e.target.value})
             }}/>
 
             <input 
@@ -84,11 +86,11 @@ const Login = ()=>{
             placeholder="Password"
             required
             onChange={(e)=>{
-                setPass(e.target.value)
+                setData({...data, password: e.target.value})
             }}
             />
             {error === true && <span className="error">User or password is not valid </span>}
-            <button type="submit" disabled={blocked} onClick={(e)=>handleLogin(e)}>Sing In</button>
+            <button type="submit" disabled={blocked} onClick={(e)=>handleLogin(e, data)}>Sing In</button>
             <p id="createAccount-p">Do not you have a account?<a id="createAccount-a" href='#'> Create now!</a></p>
         </form>
     )
