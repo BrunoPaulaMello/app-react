@@ -107,7 +107,7 @@ const SingIn = ()=>{
                 placeholder="Repeat the password"
                 required
                 onChange={(e)=>{
-                    setData({...data, passAgain: e})
+                    setData({...data, passAgain: e.target.value})
                 }}/>
                 {error === true && <span className="error">User or password is not valid </span>}
                 <button type="submit" className='buttonSingIn' disabled={blocked} onClick={(e)=>handleLogin(e, data)}>Sing In</button>

@@ -7,7 +7,7 @@ import SingIn from './components/singIn/singIn';
 function App() {
   return (
     <div className="App">
-      <Login/>
+      <SingIn/>
     </div>
   );
 }

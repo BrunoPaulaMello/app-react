@@ -13,6 +13,11 @@ app.post('/login', (req,res)=>{
     res.send({menssage: "oi"})
 })
 
+app.post('/singIn', (req,res)=>{
+    console.log(req.body)
+    res.send({menssage: "oi"})
+})
+
 app.listen(port,()=>{
     console.log("Ligou!")
 })
