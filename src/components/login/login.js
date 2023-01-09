@@ -71,28 +71,33 @@ const Login = ()=>{
 
     }
 
-    return (
-        <form>
-            <input 
-            type="email" 
-            placeholder="Email" 
-            required
-            onChange={(e)=>{
-                setData({...data, email: e.target.value})
-            }}/>
+    return ( 
+        <div className='containerLogin'>
+            <form className='formLogin'>
 
-            <input 
-            type="password" 
-            placeholder="Password"
-            required
-            onChange={(e)=>{
-                setData({...data, password: e.target.value})
-            }}
-            />
-            {error === true && <span className="error">User or password is not valid </span>}
-            <button type="submit" disabled={blocked} onClick={(e)=>handleLogin(e, data)}>Sing In</button>
-            <p id="createAccount-p">Do not you have a account?<a id="createAccount-a" href='#'> Create now!</a></p>
-        </form>
+                <input 
+                type="email" 
+                className='inputLogin'
+                placeholder="Email" 
+                required
+                onChange={(e)=>{
+                    setData({...data, email: e.target.value})
+                }}/>
+
+                <input 
+                type="password" 
+                className='inputLogin'
+                placeholder="Password"
+                required
+                onChange={(e)=>{
+                    setData({...data, password: e.target.value})
+                }}
+                />
+                {error === true && <span className="error">User or password is not valid </span>}
+                <button type="submit" disabled={blocked} className="buttonLogin" onClick={(e)=>handleLogin(e, data)}>Sing In</button>
+                <p id="createAccount-p">Do not you have a account?<a id="createAccount-a" href='#'> Create now!</a></p>
+            </form>
+        </div>
     )
 }
 

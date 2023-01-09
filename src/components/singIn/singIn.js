@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "./login.css"
+import "./singIn.css"
 
 
 
@@ -15,7 +15,7 @@ const SingIn = ()=>{
     const [blocked, setBlocked] = useState(false)
 
 
-    async function handleLogin(e){
+    async function handleLogin(e, data){
         e.preventDefault() 
 
         setError(false)
@@ -35,7 +35,7 @@ const SingIn = ()=>{
                     return false
                 }
             }
-            if(passAgain === password){
+            if(passAgain === pass){
                 return true
             }
             
@@ -81,11 +81,11 @@ const SingIn = ()=>{
 
 
     return(
-        <div className='divlogin'>
-            <form className='formLogin'>
+        <div className='containerSingIn'>
+            <form className='formSingIn'>
                 <input 
                 type="email" 
-                className='inputLogin'
+                className='inputSingIn'
                 placeholder="Email" 
                 required
                 onChange={(e)=>{
@@ -94,7 +94,7 @@ const SingIn = ()=>{
 
                 <input 
                 type="password" 
-                className='inputLogin'
+                className='inputSingIn'
                 placeholder="Password"
                 required
                 onChange={(e)=>{
@@ -103,14 +103,14 @@ const SingIn = ()=>{
 
                 <input 
                 type="password" 
-                className='inputLogin'
+                className='inputSingIn'
                 placeholder="Repeat the password"
                 required
                 onChange={(e)=>{
                     setData({...data, passAgain: e})
                 }}/>
                 {error === true && <span className="error">User or password is not valid </span>}
-                <button type="submit" className='buttonLogin' disabled={blocked} onClick={(e)=>handleLogin(e)}>Sing In</button>
+                <button type="submit" className='buttonSingIn' disabled={blocked} onClick={(e)=>handleLogin(e, data)}>Sing In</button>
                 <p id="createAccount-p">Do you have a account?<a id="createAccount-a" href='#'> Sing In now!</a></p>
             </form>
         </div>

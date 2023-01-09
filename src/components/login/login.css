@@ -1,5 +1,7 @@
-body{
+.containerLogin{
     height: 100vh;
+    width: 100%;
+    display: flex;
     background-color: black;
     background-image: url("https://p4.wallpaperbetter.com/wallpaper/909/209/82/cityscapes-night-bridges-1366x768-architecture-bridges-hd-art-wallpaper-preview.jpg");
     background-repeat: no-repeat;
@@ -9,7 +11,7 @@ body{
 
 }
 
-form{
+.formLogin{
     width: 300px;
     height: 300px;
     margin: auto;
@@ -20,19 +22,19 @@ form{
     border-radius: 3%;
 }
 
-input, button{
+.inputLogin, .buttonLogin{
     width: 260px;
     height: 60px;
     margin: 15px;
 }
 
-input{
+.inputLogin{
     border: none;
     border-bottom: 1px solid;
     font-size: 20px;
 }
 
-button{
+.buttonLogin{
     color: #fafafa;
     font-size: 20px;
     background-color: blue;
