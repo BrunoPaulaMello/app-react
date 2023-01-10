@@ -60,7 +60,7 @@ const SingIn = ()=>{
                 body: JSON.stringify(user),
             }
 
-            let res = await fetch('http://localhost:5000/singIn', objConf)
+            const res = await fetch('http://localhost:5000/singIn', objConf)
             .then((res)=>{
                 return res.json()
             })
@@ -113,6 +113,7 @@ const SingIn = ()=>{
                 onChange={(e)=>{
                     setData({...data, passAgain: e.target.value})
                 }}/>
+                
                 {error === true && <span className="error">User or password is not valid </span>}
                 <button type="submit" className='buttonSingIn' disabled={blocked} onClick={(e)=>handleLogin(e, data)}>Sing In</button>
                 <p id="createAccount-p">Do you have a account?<a id="createAccount-a" href='#'> Sing In now!</a></p>

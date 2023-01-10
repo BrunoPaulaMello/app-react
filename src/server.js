@@ -28,9 +28,32 @@ app.use(express.json());
 
 app.post('/login', (req,res)=>{
 
-    console.log(req.body)
-    res.send(JSON.stringify({menssage: "oi"}))
+    db.query("SELECT * FROM usuarios WHERE email = ? AND password = ?", [req.body.email, createHash(req.body.password)], (err, response)=>{
+        if(err){res.send(err)} 
+        if(response.length > 0) {
+            res.send({msg: "Logado com sucesso!"})
+        } else {
+            res.send({msg: "Usuario não encontrado!"})
+        }
+    })
 })
+
+
+app.post('/auth', (req,res)=>{
+    
+
+    db.query("SELECT * FROM usuarios WHERE email = ? AND password = ?", [req.body.email, res.body.token], (err, response)=>{
+        if(err){res.send(err)} 
+        if(response.length > 0) {
+            res.send({msg: "autorizado"})
+        } else {
+            res.send({msg: "recusado"})
+        }
+    })
+})
+
+
+
 
 app.post('/singIn', (req,res)=>{ 
 
@@ -46,7 +69,7 @@ app.post('/singIn', (req,res)=>{
                 if(err) res.send(err)
                 res.send({msg: "Cadastrado com sucesso!"})
             })
-        }
+        } else {res.send({msg: "Usuario ja cadastrado!"})}
     })
 })
 

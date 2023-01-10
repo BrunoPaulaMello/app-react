@@ -1,26 +1,29 @@
-import { createContext, useEffect, useState } from "react";
 
-export const AuthContext = createContext({})
 
-export const AuthProvider = ({c})=>{
 
-    const [user, setUser] = useState()
+    export const autentificacao = async (user)=>{
+        if(user){
+            let objConf = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify(user),
+            }
+            const res = await fetch('http://localhost:5000/auth', objConf)
+            .then((res)=>{return res.json()})
+            .catch((error)=> {return error})
 
-    useEffect(() =>{
-        const userToken = localStorage.getItem("user_token")
-        const usersStorage =localStorage.getItem("user_db")
+            let msg = res.msg
 
-        if(userToken && usersStorage){
-            const hasUser = JSON.parse(usersStorage)?.filter(
-                (user)=> user.email === JSON.parce(userToken).email
-            )
+            if(msg != "autorizado"){
+                localStorage.removeItem("user")
+                window.location.href = "./login" 
+                return "Recusado"
+            }
 
-            if(hasUser) setUser(hasUser[0])
+            return "autorizado"
         }
-    }, [])
-    
-
-    return <AuthContext.Provider>{c}</AuthContext.Provider>
-}
-
-
+        return "O parametro user é obrigatorio!"
+    }
