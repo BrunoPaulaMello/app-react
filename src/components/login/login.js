@@ -52,9 +52,9 @@ const Login = ()=>{
                 body: JSON.stringify(user),
             }
 
-            await fetch('http://localhost:5000/login', objConf)
-            .then(()=>{
-                console.log('oi')
+            let res = await fetch('http://localhost:5000/login', objConf)
+            .then((res)=>{
+                return res.json()
             })
             .catch(()=>{
                 console.log("hum")
@@ -62,6 +62,8 @@ const Login = ()=>{
             .finally(
                 setBlocked(false)
             )
+
+            console.log(res)
         } else {
             setError(true)
         }
@@ -94,7 +96,7 @@ const Login = ()=>{
                 }}
                 />
                 {error === true && <span className="error">User or password is not valid </span>}
-                <button type="submit" disabled={blocked} className="buttonLogin" onClick={(e)=>handleLogin(e, data)}>Sing In</button>
+                <button type="submit" disabled={blocked} className={`buttonLogin ${blocked === true? "disabled": ""}`} onClick={(e)=>handleLogin(e, data)}>Sing In</button>
                 <p id="createAccount-p">Do not you have a account?<a id="createAccount-a" href='#'> Create now!</a></p>
             </form>
         </div>

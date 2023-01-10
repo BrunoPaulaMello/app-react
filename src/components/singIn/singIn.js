@@ -60,9 +60,9 @@ const SingIn = ()=>{
                 body: JSON.stringify(user),
             }
 
-            await fetch('http://localhost:5000/singIn', objConf)
-            .then(()=>{
-                console.log('oi')
+            let res = await fetch('http://localhost:5000/singIn', objConf)
+            .then((res)=>{
+                return res.json()
             })
             .catch(()=>{
                 console.log("hum")
@@ -70,6 +70,10 @@ const SingIn = ()=>{
             .finally(
                 setBlocked(false)
             )
+
+            console.log(res)
+
+
         } else {
             setError(true)
         }

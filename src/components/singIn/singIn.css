@@ -62,3 +62,6 @@
     display: inline;
 }
 
+.disabled{
+    opacity: 0.4;
+}
