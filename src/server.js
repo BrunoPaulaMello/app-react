@@ -42,7 +42,7 @@ app.post('/login', (req,res)=>{
 app.post('/auth', (req,res)=>{
     
 
-    db.query("SELECT * FROM usuarios WHERE email = ? AND password = ?", [req.body.email, res.body.token], (err, response)=>{
+    db.query("SELECT * FROM usuarios WHERE email = ? AND password = ?", [req.body.email, req.body.token], (err, response)=>{
         if(err){res.send(err)} 
         if(response.length > 0) {
             res.send({msg: "autorizado"})

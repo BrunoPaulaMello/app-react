@@ -11,7 +11,7 @@ const Rotas = ()=>{
         <BrowserRouter>
             <Routes>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="/perfil" element={<Perfil/>}/>
+                <Route path="/perfil"  element={<Perfil/>}/>
                 <Route path="/singIn" element={<SingIn/>}/>
                 <Route exact path="/" element={<><Container/><Home/></>}/>
                 <Route path="*" element={<><Container/><Home/></>}/>
