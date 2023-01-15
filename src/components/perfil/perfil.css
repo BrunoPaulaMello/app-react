@@ -1,0 +1,67 @@
+.box{
+    width: 100%;
+    padding: 10px;
+}
+
+.lupa{
+    width: 30px;
+    height: 30px;
+}
+
+.search {
+    height: 31px;
+    border: none;
+    border-bottom: 1px solid ;
+}
+
+#searchInput{
+    width: 230px;
+    height: 30px;
+    font-size: x-large;
+    padding-left: 5px;
+    outline: 0;
+}
+
+.menu{
+    position: fixed;
+    display: flex;
+    align-items: center;
+}
+
+.menuSearch{
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    
+}
+
+
+.imagem{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.perfil {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.imgPerfil{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.imgPerfil p{
+    margin-left: 50px;
+}
+
+.informacoes {
+    position: absolute;
+    font-size: xx-large;
+    margin-top: 10px;
+    right: 80px;
+}
+

@@ -31,7 +31,7 @@ app.post('/login', (req,res)=>{
     db.query("SELECT * FROM usuarios WHERE email = ? AND password = ?", [req.body.email, createHash(req.body.password)], (err, response)=>{
         if(err){res.send(err)} 
         if(response.length > 0) {
-            res.send({msg: "Logado com sucesso!"})
+            res.send({msg: "Logado com sucesso!", token: createHash(req.body.password)})
         } else {
             res.send({msg: "Usuario não encontrado!"})
         }
