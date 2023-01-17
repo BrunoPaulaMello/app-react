@@ -11,6 +11,7 @@
 .search {
     height: 31px;
     border: none;
+    border-bottom-color: gray;
     border-bottom: 1px solid ;
 }
 
@@ -26,6 +27,7 @@
     position: fixed;
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 .menuSearch{
@@ -65,3 +67,23 @@
     right: 80px;
 }
 
+.grupos {
+    height: 300px;
+    width: 200px;
+    margin-top: 100px;
+}
+
+.grupo{
+    height: 45px;
+    margin: 5px;
+    display: inline-block;
+    width: 45px;
+    border-radius: 50%;
+    background-color: rgb(12, 9, 5);
+}
+
+.publicacoes-perfil{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -16,7 +16,18 @@ const Perfil = ()=>{
                         <div className="menuSearch">
                             <label className="search"><img src={Lupa} alt="?" className="lupa"/></label>
                             <input className="search" id="searchInput"></input>
+                        </div>
 
+                        <div className="grupos">
+                            <p className="grupo"></p>
+                            <p className="grupo"></p>
+                            <p className="grupo"></p>
+                            <p className="grupo"></p>
+                            <p className="grupo"></p>
+                            <p className="grupo"></p>
+                            <p className="grupo"></p>
+                            <p className="grupo"></p>
+                            <p className="grupo"></p>
                         </div>
                     </div>
 
@@ -30,6 +41,37 @@ const Perfil = ()=>{
                                 Follows: 12M <br/>
                                 Age: 34
                             </p>
+                        </div>
+                    </div>
+                    <div className="publicacoes-perfil">
+                        <div className="publicacoes">
+                            <div className="publicacao">
+                                <div className="autor">
+                                    <img src={Felipe} alt="A"/>
+                                    <h3>Autor</h3>
+                                </div>
+                                <div className="conteudo">
+                                    <p>Felipe Neto é um youtuber!</p>
+                                </div>
+                            </div>
+                            <div className="publicacao">
+                                <div className="autor">
+                                    <img src={Felipe} alt="A"/>
+                                    <h3>Autor</h3>
+                                </div>
+                                <div className="conteudo">
+                                    <p>Felipe Neto é um youtuber!</p>
+                                </div>
+                            </div>
+                            <div className="publicacao">
+                                <div className="autor">
+                                    <img src={Felipe} alt="A"/>
+                                    <h3>Autor</h3>
+                                </div>
+                                <div className="conteudo">
+                                    <p>Felipe Neto é um youtuber!</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
