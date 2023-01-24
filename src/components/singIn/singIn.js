@@ -71,7 +71,9 @@ const SingIn = ()=>{
                 setBlocked(false)
             )
 
-            console.log(res)
+            if(res.msg ===   "Cadastrado com sucesso!"){
+                window.location.href = "../login"
+            }
 
 
         } else {
