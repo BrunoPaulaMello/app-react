@@ -31,6 +31,7 @@ app.post('/login', (req,res)=>{
     db.query("SELECT * FROM usuarios WHERE email = ? AND password = ?", [req.body.email, createHash(req.body.password)], (err, response)=>{
         if(err){res.send(err)} 
         if(response.length > 0) {
+            console.log(response)
             res.send({msg: "Logado com sucesso!", token: createHash(req.body.password)})
         } else {
             res.send({msg: "Usuario não encontrado!"})
@@ -71,6 +72,14 @@ app.post('/singIn', (req,res)=>{
             })
         } else {res.send({msg: "Usuario ja cadastrado!"})}
     })
+})
+
+app.post('/message', (req,res)=>{
+
+    db.query("INSERT INTO mensagens (id_relacional, detalhes, conteudo, gostei, nao_gostei) VALUES (?,?,?,?,?)",[req.body.id, req.body.details, req.body.contents, 0, 0], (err, result)=>{
+        res.send({msg: "Mensagem enviada com sucesso!"})                             
+    })
+    
 })
 
 app.listen(port,()=>{

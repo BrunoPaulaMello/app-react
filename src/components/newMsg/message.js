@@ -3,27 +3,65 @@ import { useState } from "react"
 
 const NewMsg = ()=>{
 
-    const [messageType, setMessageType] = useState("text")
+    const [data, setData] = useState({
+        type: "text",
+        message: "",
+    })
+
+    const user = {
+        id: 1,
+    }
     /*
 
         -autenticacao e autorizacao ()
         -DB config (x)
-        -Server config ()
-        -Images and other file types
+        -Server config (x)
+        -Images and other file types ()
 
     */
+
+
+        async function handleSubmit(){
+
+            let message = {
+            id: user.id,
+            details: data.type,
+            contents: data.message,
+            }
+
+            let objConf = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            body: JSON.stringify(message),
+            }
+            
+            const res = await fetch('http://localhost:5000/message', objConf)
+            .then((res)=>{
+                return res.json()
+            })
+            .catch(()=>{
+                console.log("hum")
+            })
+            console.log(res)
+            
+        }
+
     return(
         <>
-            <form method="post">
+            <form onSubmit={()=> handleSubmit()}>
+
                 <label htmlFor="message">Nova mensagem</label>
-                <input type={messageType} name="message" id="message"/>
+                <input type={data.type} name="message" id="message" onChange={(e)=> setData({...data, message: e.target.value})}/>
                 <label htmlFor="messageType">Tipo de mensagem</label>
 
                 <select name="messageType" id="messageType" onChange={(e)=>{
                     if(e.target.value === "text"){
-                    setMessageType("text")
+                        setData({...data, type: "text"})
                     } else {
-                        setMessageType("file")
+                        setData({...data, type: "file"})
                     }
                 }}>
                     <option value="text">Texto</option>
